@@ -1,0 +1,43 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <span>访问 Model：</span><span th:text="'你好，漂亮的'+${user.userName}">码云</span>
+    </div>
+    <div>
+        <span>访问列表</span>
+        <table>
+            <thead>
+            <tr>
+                <th>姓名</th>
+                <th>年龄</th>
+                <th>地址</th>
+                <th>性别</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="human : ${userdatas}">
+                <td th:text="${human.userName}">李白</td>
+                <td th:text="${human.age}">18</td>
+                <td th:text="${human.address}">唐朝</td>
+                <td th:switch="${human.gender}">
+                   <span th:case="'0'" >女</span>
+                   <span th:case="'1'" >男</span>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+    <div th:fragment="copy">
+        &copy; 2018 Copyright by Lusifer.
+    </div>
+</body>
+</html>
